@@ -1,5 +1,20 @@
-# drlnd_navigation
-Train an agent to solve the Banana UnitiEnvironment form the Deep Reinforcement Learning Nanodegree
+# Solving the DRLND Unity Navigation Environment
+
+Train an agent to solve the Banana Unity Environment from the Deep Reinforcement
+Learning Nanodegree on Udacity.
+
+![Trained Agent +12 Score](./gifs/trained-1-unity.gif)
+![Reward Plot Training 2000 Episodes](./figures/reward-plot.png)
+
+The trained agent playing above achieved a score of +12. After 600 episodes of
+training, the agent achieved an average score of +13 over 100 consecutive
+episodes. The task was solved using a simple DQN architecture without
+imporovements on the 37 dimensional state vector.
+
+## Training
+
+![Trained Agent +12 Score](./gifs/training-1-screen.gif)
+
 
 ## Prerequisites
 
@@ -23,3 +38,4 @@ environment.
 Next, run `make start` to start the Jupyter notebook server and use your favorite
 browser to navigate to
 [http://localhost:8888/?token=abcd](http://localhost:8888/?token=abcd).
+
