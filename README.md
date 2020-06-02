@@ -1,15 +1,19 @@
 # Solving the DRLND Unity Navigation Environment
 
-Train an agent to solve the Banana Unity Environment from the Deep Reinforcement
+Train an agent to solve the `Banana` Unity Environment from the Deep Reinforcement
 Learning Nanodegree on Udacity.
 
 ![Trained Agent +12 Score](./gifs/trained-1-unity.gif)
 ![Reward Plot Training 2000 Episodes](./figures/reward-plot.png)
 
-The trained agent playing above achieved a score of +12. After 600 episodes of
-training, the agent achieved an average score of +13 over 100 consecutive
-episodes. The task was solved using a simple DQN architecture without
-imporovements on the 37 dimensional state vector.
+
+
+After 600 episodes of training, the agent achieved an average score of +13 over
+100 consecutive episodes. The trained agent playing in the left GIF above
+achieved a score of +12 in that instance.
+
+The  task was solved using a simple DQN
+architecture without imporovements on the 37 dimensional state vector.
 
 ## Training
 
@@ -19,19 +23,35 @@ imporovements on the 37 dimensional state vector.
 ## Prerequisites
 
 - `conda` or `miniconda` (recommended)
+- `make`
+- Download the environment that matches your OS following the *Getting Started* from the DRLND
+  [repo](https://github.com/udacity/deep-reinforcement-learning/blob/master/p1_navigation/README.md#getting-started)
+  and unpack it in the root of this project
 
 ## Install Environment
 
-Create a `conda` environment called `drlnd_nav` with Python3.6 using the
-following commands
+### Automated Install
+
+Simply run `make install` to install all requirements in a `conda` environment
+called `drlnd_nav`.
+
+### Manual Install
+
+Create a `conda` environment called `drlnd_nav` with Python3.6 and activate it
+using the following commands
 
 ```zsh
 conda create --name drlnd_nav python=3.6
 conda activate drlnd_nav
 ```
 
-Next, run `make install` to install all requirements in the created `conda`
-environment.
+Then install the requirements file `requirements.txt` and install the drlnd_nav
+ipykernel.
+
+```zsh
+pip install -r $(PWD)/requirements.txt
+python -m ipykernel install --user --name drlnd_nav --display-name "drlnd_nav"
+```
 
 ## Run the Code
 

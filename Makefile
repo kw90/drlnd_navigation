@@ -15,37 +15,16 @@ PWD ?= pwd_unknown
 # should not to be changed if you follow GitOps operating procedures.
 PROJECT_NAME = $(notdir $(PWD))
 
-# if vars not set specifially: try default to environment, else fixed value.
-# strip to ensure spaces are removed in future editorial mistakes.
-# tested to work consistently on popular Linux flavors and Mac.
-ifeq ($(user),)
-# USER retrieved from env, UID from shell.
-HOST_USER ?= $(strip $(if $(USER),$(USER),nodummy))
-HOST_UID ?= $(strip $(if $(shell id -u),$(shell id -u),4000))
-else
-# allow override by adding user= and/ or uid=  (lowercase!).
-# uid= defaults to 0 if user= set (i.e. root).
-HOST_USER = $(user)
-HOST_UID = $(strip $(if $(uid),$(uid),0))
-endif
-
-THIS_FILE := $(lastword $(MAKEFILE_LIST))
-#CMD_ARGUMENTS ?= $(cmd)
 NB_TOKEN ?= abcd
 
 SHELL=/bin/bash
 CONDA_ACTIVATE=source $$(conda info --base)/etc/profile.d/conda.sh ; conda activate ; conda activate
 
-
 # export such that its passed to shell functions for Docker to pick up.
 export PROJECT_NAME
-export HOST_USER
-export HOST_UID
 
-# all our targets are phony (no files to check).
-.PHONY: build remove 
-
-.INTERMEDIATE: remove
+# all targets are phony (no files to check).
+.ONESHELL: install start
 
 install:
 	conda create --name drlnd_nav python=3.6
@@ -55,9 +34,6 @@ install:
 
 start:
 	($(CONDA_ACTIVATE) drlnd_nav ; jupyter notebook --ip=127.0.0.1 --port=8888 --NotebookApp.token='$(NB_TOKEN)' --NotebookApp.password='')
-
-# remove:
-# 	docker stop pandoc-latex && docker rm pandoc-latex
 
 prune:
 	docker system prune -a
