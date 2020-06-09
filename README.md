@@ -10,10 +10,15 @@ Learning Nanodegree on Udacity.
 
 After 600 episodes of training, the agent achieved an average score of +13 over
 100 consecutive episodes. The trained agent playing in the left GIF above
-achieved a score of +12 in that instance.
+achieved a score of +12 in that instance. The environment is considered solved
+if the average reward over 100 consecutive episodes is above +13.
 
-The  task was solved using a simple DQN
-architecture without imporovements on the 37 dimensional state vector.
+The task was solved using a simple DQN architecture with experience replay and
+using using a separate network that stays fixed for `C` updates to generate the
+targets on the 37 dimensional state vector. The DQN learns a parametric
+approximation of the action-value function that maps the state vector to
+actions, by minimizing the mean-squared error. More information found in the
+[detailed report](./Report.md).
 
 ## Training
 
@@ -59,3 +64,14 @@ Next, run `make start` to start the Jupyter notebook server and use your favorit
 browser to navigate to
 [http://localhost:8888/?token=abcd](http://localhost:8888/?token=abcd).
 
+### Train an Agent
+
+To train an agent start the
+[`kW_Solution-Train.ipynb`](http://127.0.0.1:8888/notebooks/kW_Solution-Train.ipynb#Train-the-Agent-with-DQN)
+notebook and run all the cells (this will also plot the rewards over the number
+of episodes and save the model weights to disk).
+
+### Watch a Trained Agent
+
+To watch a successful agent solve the environment, run all the cells in
+[`kW_Solution-Watch.ipynb`](http://127.0.0.1:8888/notebooks/kW_Solution-Watch.ipynb#Watch-a-Trained-Agent).
