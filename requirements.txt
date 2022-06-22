@@ -4,7 +4,7 @@ gym==0.17.2
 ipykernel==5.3.0
 jupyter==1.0.0
 matplotlib==3.2.1
-numpy==1.18.4
+numpy==1.22.0
 pandas==1.0.4
 pillow==7.1.2
 protobuf==3.12.2
